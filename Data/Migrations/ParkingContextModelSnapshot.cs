@@ -27,7 +27,7 @@ namespace Data.Migrations
 
                     b.HasKey("Type");
 
-                    b.ToTable("Fees", (string)null);
+                    b.ToTable("Fees");
 
                     b.HasData(
                         new
@@ -71,7 +71,7 @@ namespace Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Parkings", (string)null);
+                    b.ToTable("Parkings");
                 });
 
             modelBuilder.Entity("Data.Entities.Slot", b =>
@@ -89,7 +89,7 @@ namespace Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Slots", (string)null);
+                    b.ToTable("Slots");
                 });
 
             modelBuilder.Entity("Data.Entities.User", b =>
@@ -112,7 +112,7 @@ namespace Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
 
                     b.HasData(
                         new

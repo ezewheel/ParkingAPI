@@ -31,6 +31,33 @@ namespace Services.ParkingService
             }).ToList();
         }
 
+        public List<ReportDto> GetReports()
+        {
+            List<Parking> parkings = _parkingRepository.Get();
+            int month;
+            ReportDto[] parkingsForReport = new ReportDto[12];
+
+            for (int i = 0; i < 12; i++)
+            {
+                parkingsForReport[i] = new ReportDto
+                {
+                    Month = i + 1,
+                    ParkingCount = 0,
+                    TotalValue = 0
+                };
+            }
+
+            foreach (Parking parking in parkings)
+            {
+                if (parking.ExitTime is null) continue;
+                month = parking.EntryTime.Month;
+                parkingsForReport[month - 1].ParkingCount += 1;
+                parkingsForReport[month - 1].TotalValue += parking.Fee;
+            }
+
+            return parkingsForReport.ToList();
+        }
+
         public void Add(ParkingForAddDto parkingForAdd)
         {
             _parkingRepository.Add(new Parking

@@ -34,7 +34,7 @@ namespace Services.AuthService
               _config["Authentication:Audience"],
               claimsForToken,
               DateTime.UtcNow,
-              DateTime.UtcNow.AddMinutes(100000),
+              DateTime.UtcNow.AddMinutes(5),
               signature);
 
             return new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken);

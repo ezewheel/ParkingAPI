@@ -35,5 +35,11 @@ namespace ParkingAPI.Controllers
 
             return Ok(parking);
         }
+
+        [HttpGet("reports")]
+        public IActionResult Get()
+        {
+            return Ok(_parkingService.GetReports());
+        }
     }
 }
